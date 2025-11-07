@@ -6,18 +6,20 @@ const fs = require('fs');
 const crypto = require('crypto');
 const Submission = require('../models/Submission');
 const path = require('path');
+const { Storage } = require('@google-cloud/storage');
 
-// Multer config for file uploads
-// ... existing code ...
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+// Initialize Cloud Storage
+const storage = new Storage();
+const bucketName = 'sensus-uploads';
+const bucket = storage.bucket(bucketName);
+
+// Multer config for file uploads (temporarily stores files in memory)
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+        fileSize: 10 * 1024 * 1024 // 10MB limit
     }
 });
-const upload = multer({ storage: storage });
 
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
 const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
@@ -43,7 +45,18 @@ async function getEmotionalVector(submission) {
                 };
             } else if (submission.contentType === 'image') {
                 apiUrl = GEMINI_VISION_API_URL;
-                const imageBytes = fs.readFileSync(submission.content).toString('base64');
+                let imageBytes;
+                
+                // Check if it's a GCS URL or local file path
+                if (submission.content.startsWith('https://storage.googleapis.com/')) {
+                    // Download from GCS
+                    const response = await axios.get(submission.content, { responseType: 'arraybuffer' });
+                    imageBytes = Buffer.from(response.data).toString('base64');
+                } else {
+                    // Read from local file (fallback for old uploads)
+                    imageBytes = fs.readFileSync(submission.content).toString('base64');
+                }
+                
                 requestBody = {
                     contents: [{
                         parts: [
@@ -144,13 +157,32 @@ router.post('/submit', upload.single('file'), async (req, res) => {
                 sessionToken: newSessionToken
             });
         } else if (req.file) {
-            // Normalize the path to use forward slashes and relative path
-            const normalizedPath = req.file.path.replace(/\\/g, '/');
-            console.log(`File uploaded: ${normalizedPath}, mimetype: ${req.file.mimetype}`);
+            // Upload file to Cloud Storage
+            const filename = `${Date.now()}-${req.file.originalname}`;
+            const blob = bucket.file(filename);
+            
+            const blobStream = blob.createWriteStream({
+                resumable: false,
+                metadata: {
+                    contentType: req.file.mimetype,
+                    cacheControl: 'public, max-age=31536000', // Cache for 1 year
+                }
+            });
+
+            // Wrap the upload in a promise
+            await new Promise((resolve, reject) => {
+                blobStream.on('error', reject);
+                blobStream.on('finish', resolve);
+                blobStream.end(req.file.buffer);
+            });
+
+            // Get the public URL
+            const publicUrl = `https://storage.googleapis.com/${bucketName}/${filename}`;
+            console.log(`File uploaded to GCS: ${publicUrl}, mimetype: ${req.file.mimetype}`);
             
             newSubmission = new Submission({
                 contentType: req.file.mimetype.startsWith('image') ? 'image' : 'audio',
-                content: normalizedPath,
+                content: publicUrl, // Store the GCS URL instead of file path
                 sessionToken: newSessionToken
             });
         } else {

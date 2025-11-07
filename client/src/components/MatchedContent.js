@@ -4,9 +4,15 @@ const MatchedContent = ({ content, apiUrl }) => {
     const [imageError, setImageError] = useState(false);
     
     const getFileUrl = (filePath) => {
-        // The server is configured to serve static files from the 'uploads' directory
+        // If it's already a full URL (GCS), use it directly
+        if (filePath.startsWith('http://') || filePath.startsWith('https://')) {
+            console.log('Loading file from GCS:', filePath);
+            return filePath;
+        }
+        
+        // Otherwise, it's a legacy local path
         const url = `${apiUrl}/${filePath}`;
-        console.log('Loading file from:', url);
+        console.log('Loading file from server:', url);
         return url;
     };
 
