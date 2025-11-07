@@ -5,11 +5,13 @@ function InfoTooltip() {
     const [showTooltip, setShowTooltip] = useState(false);
 
     return (
-        <div className="info-tooltip-container">
+        <div 
+            className="info-tooltip-container"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+        >
             <button 
                 className="info-icon"
-                onMouseEnter={() => setShowTooltip(true)}
-                onMouseLeave={() => setShowTooltip(false)}
                 onClick={() => setShowTooltip(!showTooltip)}
                 aria-label="About Sensus"
             >
