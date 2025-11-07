@@ -6,6 +6,7 @@ import CooldownTimer from './components/CooldownTimer';
 import ErrorBoundary from './components/ErrorBoundary';
 import DarkModeToggle from './components/DarkModeToggle';
 import AdminStatus from './components/AdminStatus';
+import InfoTooltip from './components/InfoTooltip';
 
 // Allow overriding the backend URL at build time with REACT_APP_API_URL.
 // This makes production builds portable and avoids hard-coded project URLs.
@@ -164,6 +165,7 @@ function App() {
     return (
         <ErrorBoundary>
             <div className="App">
+                <InfoTooltip />
                 <AdminStatus apiUrl={API_URL} />
                 {cooldownTime > 0 ? (
                     <div className="top-bar">

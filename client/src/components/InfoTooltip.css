@@ -1,0 +1,142 @@
+.info-tooltip-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.info-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    transition: color 0.3s ease;
+    border-radius: 50%;
+}
+
+.info-icon:hover {
+    color: #555;
+}
+
+.info-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.tooltip-content {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+    z-index: 1001;
+}
+
+.tooltip-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.tooltip-content p {
+    margin: 0.5rem 0;
+    text-align: left;
+}
+
+.tooltip-content strong {
+    font-weight: 600;
+    color: #222;
+}
+
+.tooltip-content em {
+    font-style: italic;
+}
+
+.tooltip-philosophy {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #666;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #eee;
+}
+
+.tooltip-footer {
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.tooltip-footer a {
+    color: #2196F3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.tooltip-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .info-tooltip-container {
+        top: 15px;
+        left: 15px;
+    }
+
+    .tooltip-content {
+        width: calc(100vw - 40px);
+        max-width: 280px;
+    }
+}
+
+/* Dark mode styles */
+body.dark-mode .info-icon {
+    color: #aaa;
+}
+
+body.dark-mode .info-icon:hover {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tooltip-content {
+    background: #1e1e1e;
+    border-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .tooltip-content h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tooltip-content strong {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tooltip-philosophy {
+    color: #aaa;
+    border-top-color: #333;
+}
+
+body.dark-mode .tooltip-footer {
+    border-top-color: #333;
+}
+
+body.dark-mode .tooltip-footer a {
+    color: #64B5F6;
+}
