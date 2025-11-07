@@ -20,10 +20,16 @@ server/.env
 consolidate.js
 sensus-codebase.txt
 sensus-codebase-alpha.txt
-WHETSTONE_FRAMEWORK_WORKBENCH.html
 
 # Log files
 *.log
 
 # Uploads folder
 /server/uploads/
+
+# Book manuscript (not ready for public release)
+The Authentic Rebellion - Second Master Draft.md
+The Authentic Rebellion - Second Master Draft.pdf
+
+# Research notes (private)
+kentw-youtube.md
