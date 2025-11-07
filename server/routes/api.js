@@ -19,8 +19,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`;
-const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
+const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
 
 async function getEmotionalVector(submission) {
     const maxRetries = 3;
@@ -144,9 +144,13 @@ router.post('/submit', upload.single('file'), async (req, res) => {
                 sessionToken: newSessionToken
             });
         } else if (req.file) {
+            // Normalize the path to use forward slashes and relative path
+            const normalizedPath = req.file.path.replace(/\\/g, '/');
+            console.log(`File uploaded: ${normalizedPath}, mimetype: ${req.file.mimetype}`);
+            
             newSubmission = new Submission({
                 contentType: req.file.mimetype.startsWith('image') ? 'image' : 'audio',
-                content: req.file.path,
+                content: normalizedPath,
                 sessionToken: newSessionToken
             });
         } else {
