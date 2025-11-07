@@ -50,9 +50,10 @@ Sensus is **Act I** of The Whetstone Framework—a three-part vision for buildin
 
 - **Act I: Sensus** (this project) — Detoxification: Anonymous emotional exchange to escape the Performance Prison
 - **Act II: The Whetstone** (in development) — Individuation: A local-first AI device for Socratic self-reflection
-- **Act III: Lyceum** (planned) — Collective Flourishing: AI-facilitated civic deliberation with ethical guardrails
+- **Act III: The Lyceum Network** (active development) — Decentralized Infrastructure: A user-owned, multi-layered mesh network for communication and federated compute, protected from corporate capture
 
-**[📖 Read the full framework documentation](https://yargnad.github.io/sensus-app/)**
+**[📖 Read the Whetstone Framework documentation](https://yargnad.github.io/sensus-app/)**
+**[🌐 Explore The Lyceum Network](https://github.com/yargnad/The-Lyceum)**
 
 ---
 
