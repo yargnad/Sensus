@@ -521,28 +521,277 @@
                 
                 <div class="project-card">
                     <h3>Status: ACTIVE DEVELOPMENT</h3>
-                    <p><strong>Vision:</strong> Decentralized mesh network with AI-augmented deliberation</p>
-                    <p><strong>Target:</strong> Off-grid alternative to corporate internet infrastructure</p>
+                    <p><strong>Repository:</strong> <a href="https://github.com/yargnad/The-Lyceum" target="_blank">github.com/yargnad/The-Lyceum</a></p>
+                    <p><strong>Vision:</strong> User-owned, multi-layered, decentralized communication and compute network</p>
+                    <p><strong>License:</strong> GNU GPL v3.0 (forever free and open-source)</p>
+                </div>
+                
+                <h3>The Doctrine: Radical Resourcefulness</h3>
+                
+                <p>The Lyceum rejects the endless cycle of engineered obsolescence. It's built to honor and utilize <strong>any hardware you can contribute</strong>—from a brand-new single-board computer to a dusty laptop in your closet. In this commons, nothing is wasted.</p>
+                
+                <div class="principle-box">
+                    <h4>"People Over Tokens"</h4>
+                    <p>This is the foundational, non-negotiable principle. The network is a public commons built for <strong>utility</strong>, not a speculative asset built for profit. The token exists only to incentivize participation and police bad actors—it is NOT the product.</p>
                 </div>
                 
                 <h3>The Evolution</h3>
                 
-                <p>The Lyceum has evolved from a simple federated AI moderation platform into a comprehensive vision for <strong>decentralized internet infrastructure</strong> that cannot be captured by corporate or state interests.</p>
+                <p>The Lyceum has evolved from a simple federated AI moderation platform into a comprehensive vision for <strong>decentralized internet infrastructure</strong> that cannot be captured by corporate or state interests. This document establishes prior art and places these innovations permanently in the public commons.</p>
                 
-                <h3>Core Vision</h3>
+                <h3>Core Innovations (Prior Art Declaration)</h3>
                 
-                <p>The Lyceum Network is a <strong>physical mesh network</strong> combining:</p>
+                <p>The Lyceum establishes prior art for a novel, multi-layered system with these specific, interlocking components:</p>
+                
+                <ol>
+                    <li><strong>AI-Enhanced Walkie-Talkie (AIWT)</strong> - Device enabling long-range voice communication over low-bandwidth LoRa mesh via on-device Speech-to-Text → text transmission → Text-to-Speech pipeline</li>
+                    <li><strong>NPU-Accelerated Software Stack</strong> - Specific pairing of SenseVoice-RKNN (STT) + paroli (TTS) on Rockchip hardware for efficient on-device AI</li>
+                    <li><strong>"Two-Brain" Power Architecture</strong> - Battery-powered standby where high-power "Thinker" (Linux SBC) sleeps until woken by hardware interrupt from low-power "Listener" (LoRa co-processor)</li>
+                    <li><strong>"Proof-of-Utility" Compute Network (Pneuma)</strong> - Federated compute built from idle node resources using "Anti-Blockchain" lightweight ledger rewarding verifiable utility</li>
+                    <li><strong>Two-Path Layer 3 Backbone</strong> - Encrypted long-haul PTP links using 900 MHz LoRa PTP (resilient NLOS) + 5 GHz Wi-Fi PTP (high-bandwidth LOS)</li>
+                    <li><strong>Vetted Application Ecosystem (Symbolon)</strong> - On-device containerized apps vetted by federated "Pneuma Guardian" nodes</li>
+                </ol>
+                
+                <h3>System Architecture: A Multi-Layered Commons</h3>
+                
+                <p>The Lyceum is not a single network, but a hybrid of three distinct, symbiotic layers:</p>
+                
+                <h4>Layer 1: The Access Mesh (900 MHz LoRa)</h4>
+                
+                <p><strong>The network for everyone.</strong> Provides resilient, low-power, long-range communication accessible to any participant.</p>
+                
+                <div class="principle-box">
+                    <h4>Cryptographic Boundary (The Private Channel)</h4>
+                    <p>The Lyceum does NOT operate on the public Meshtastic channel. Our network is a <strong>private, encrypted commons</strong> with cryptographic borders:</p>
+                    <ul>
+                        <li><strong>Pre-Shared Key (PSK)</strong> - All communication encrypted using secret PSK. Only devices with this key can decrypt and relay traffic.</li>
+                        <li><strong>Access Control</strong> - Devices without the key only hear indecipherable static.</li>
+                        <li><strong>Sovereignty</strong> - Network security based on strong encryption, not obscurity.</li>
+                    </ul>
+                </div>
+                
+                <p><strong>Network Principles:</strong></p>
                 
                 <ul>
-                    <li><strong>Hardware nodes</strong> - Raspberry Pi or similar devices running decentralized services</li>
-                    <li><strong>Mesh networking</strong> - Direct peer-to-peer connections without central ISPs</li>
-                    <li><strong>Local-first AI</strong> - On-device inference for content moderation and deliberation</li>
-                    <li><strong>Federated services</strong> - Email, messaging, file sharing, forums—all self-hosted</li>
-                    <li><strong>Ethical deliberation tools</strong> - AI-facilitated governance and decision-making</li>
-                    <li><strong>Offline resilience</strong> - Network functions even without internet connectivity</li>
+                    <li><strong>Node Addressing</strong> - Every device has unique, randomly generated Node ID (e.g., !a7b3c9d1)</li>
+                    <li><strong>Broadcast Messages</strong> - "Town Crier" for community-wide information</li>
+                    <li><strong>Direct Messages</strong> - "Sealed Letter" for point-to-point communication</li>
+                    <li><strong>Flood Prevention</strong> - "Seen" lists, hop limits, and ACK cleanup prevent message storms</li>
+                    <li><strong>Smart Rumor Mill</strong> - Messages delivered efficiently then die quietly</li>
                 </ul>
                 
-                <h3>Why Off-Grid Infrastructure Matters</h3>
+                <div class="principle-box">
+                    <h4>Why NOT CBRS (3.5 GHz)?</h4>
+                    <p>CBRS is a "poisoned chalice"—appears powerful but violates our core principles:</p>
+                    <ul>
+                        <li><strong>Fails Resilience</strong> - Requires constant internet connection to Spectrum Access System (SAS). If internet down, network dies.</li>
+                        <li><strong>Fails Sovereignty</strong> - Permissioned system requiring corporate approval to transmit.</li>
+                        <li><strong>Fails Privacy</strong> - Surveillance architecture requiring identity and GPS reporting to central database.</li>
+                    </ul>
+                    <p><strong>Lyceum uses ONLY truly unlicensed, permissionless bands</strong> (900 MHz ISM, 5 GHz UNII) where right to communicate is guaranteed by owned hardware, not corporate cloud service.</p>
+                </div>
+                
+                <h4>Layer 2: The Utility Fabric (Wi-Fi HaLow - 900 MHz)</h4>
+                
+                <p><strong>The high-bandwidth local network</strong> that hosts the Pneuma compute resources and local applications.</p>
+                
+                <h4>Layer 3: The Backbone Link (Two-Path Model)</h4>
+                
+                <p><strong>The network's native, long-distance backhaul</strong> connecting regional clusters. Operators choose the best path for their terrain:</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h5>Path 1: Resilience Link (900 MHz LoRa PTP)</h5>
+                        <p><strong>For Non-Line-of-Sight (NLOS) connections.</strong> High-power (1W) LoRa modules + high-gain directional Yagi antennas. Sacrifices bandwidth for resilience—easily bends around hills and trees. Ideal for syncing Pneuma ledger and routing low-bandwidth "Reflex" AI jobs.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h5>Path 2: Bandwidth Link (5 GHz Wi-Fi PTP)</h5>
+                        <p><strong>For Line-of-Sight (LOS) connections.</strong> Off-the-shelf PTP Wi-Fi bridges (e.g., Ubiquiti NanoStation). Provides massive fiber-speed bandwidth pipe (100Mbps - 1Gbps+) capable of carrying heaviest "Cortex" (Fractured MoE) compute jobs.</p>
+                    </div>
+                </div>
+                
+                <p>This two-path architecture allows operators to choose the best solution for their terrain, creating a more resilient and resourceful commons.</p>
+                
+                <h3>The Gateway Application: AI-Enhanced Walkie-Talkie (AIWT)</h3>
+                
+                <p><strong>The "killer app" designed to bootstrap the entire ecosystem.</strong> Provides immediate, tangible utility—long-range voice communication without corporate infrastructure—and serves as gateway for users to join and organically grow the network.</p>
+                
+                <h4>Two Build Paths: "Choose Your Own Level of Involvement"</h4>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h5>Path A: The "Scout" AIWT</h5>
+                        <p><strong>Phone-Reliant, Low-Cost Entry Point</strong></p>
+                        <ul>
+                            <li><strong>Cost:</strong> $25-$30</li>
+                            <li><strong>Hardware:</strong> Heltec V4 (ESP32-S3) or similar Meshtastic board</li>
+                            <li><strong>Software:</strong> Standard Meshtastic firmware + Lyceum mobile client (forked)</li>
+                            <li><strong>Philosophy:</strong> Maximum accessibility to drive network growth</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h5>Path B: The "Sovereign" AIWT</h5>
+                        <p><strong>Self-Contained, High-Performance Node</strong></p>
+                        <ul>
+                            <li><strong>Cost:</strong> $120-$145</li>
+                            <li><strong>Hardware:</strong> Radxa Zero 3W (4GB) + Waveshare SX1262 LoRa HAT + 1.3" OLED HAT (joystick + buttons) + LiPo battery + solar charging</li>
+                            <li><strong>Software:</strong> Armbian + Meshtastic + NPU-accelerated AI stack</li>
+                            <li><strong>Philosophy:</strong> Maximum sovereignty + first "Pneuma Seed Node"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>The NPU-Accelerated AI Stack (Technical Win)</h4>
+                
+                <p><strong>This is the "secret sauce" of the Sovereign build</strong>—ensuring high performance and low battery consumption:</p>
+                
+                <ul>
+                    <li><strong>Speech-to-Text (STT):</strong> SenseVoiceSmall-RKNN2 model specifically optimized for Rockchip NPU. Handles the "hearing" part.</li>
+                    <li><strong>Text-to-Speech (TTS):</strong> paroli library—blazing-fast TTS engine optimized for Rockchip NPU. Generates speech 5x faster than real-time, 35MB footprint. Handles the "speaking" part.</li>
+                    <li><strong>End-to-end NPU pipeline:</strong> SenseVoice → paroli offloads all heavy AI from main CPU, dramatically improving responsiveness and battery life.</li>
+                </ul>
+                
+                <h4>The "Two Brains" Power Architecture</h4>
+                
+                <p><strong>Sovereign AIWT solves battery life with innovative dual-processor design:</strong></p>
+                
+                <ul>
+                    <li><strong>Brain #1: The Thinker (Radxa Zero 3W)</strong> - Powerful main processor spending most time in deep, low-power sleep.</li>
+                    <li><strong>Brain #2: The Listener (SX1262 LoRa Chip)</strong> - Dedicated microcontroller on LoRa HAT that sips microamps and <strong>never sleeps</strong>.</li>
+                </ul>
+                
+                <p><strong>The "Digital Tripwire" Workflow:</strong></p>
+                
+                <ol>
+                    <li><strong>The Vigil:</strong> Radxa sleeps, but first tells SX1262 to watch for incoming messages</li>
+                    <li><strong>The Whisper:</strong> LoRa packet arrives. Always-on SX1262 receives it into internal buffer</li>
+                    <li><strong>The Tripwire:</strong> SX1262 sends hardware interrupt (electrical signal) to Radxa via GPIO pin</li>
+                    <li><strong>The Awakening:</strong> Interrupt instantly wakes Radxa CPU from sleep</li>
+                    <li><strong>The Hand-Off:</strong> Radxa queries LoRa HAT and retrieves message from buffer</li>
+                    <li><strong>Action & Return:</strong> Radxa processes message (displays, runs TTS), then returns to sleep</li>
+                </ol>
+                
+                <h4>Sovereign AIWT: Control & UI Concept</h4>
+                
+                <p><strong>Waveshare OLED HAT provides rich 8-button control scheme</strong> transforming device from simple walkie-talkie into full handheld communicator:</p>
+                
+                <ul>
+                    <li><strong>Joystick Center-Press:</strong> PTT (Push-to-Talk)</li>
+                    <li><strong>Joystick Up/Down:</strong> Volume Up/Down or Message Scroll</li>
+                    <li><strong>Joystick Left/Right:</strong> Channel/Contact Switch or Menu Navigation</li>
+                    <li><strong>Button 1 (Top):</strong> Power / Main Menu</li>
+                    <li><strong>Button 2 (Middle):</strong> "Inbox / Replay" (toggles message inbox, replays selected message)</li>
+                    <li><strong>Button 3 (Bottom):</strong> The "Pneuma Button" (activates STT for direct query to Pneuma federated AI)</li>
+                </ul>
+                
+                <h4>The Immediate Goal: "Ping-Pong" Proof-of-Concept</h4>
+                
+                <ol>
+                    <li>Build one Scout and one Sovereign node</li>
+                    <li>Flash both with base Meshtastic firmware and confirm text message exchange</li>
+                    <li>Implement "Scout Send" (fork Meshtastic mobile client, implement STT-to-text transmission)</li>
+                    <li>Implement "Sovereign AI" (install SenseVoice + paroli models, write control script)</li>
+                    <li><strong>Win Condition:</strong> User speaks into Scout-paired phone. Sovereign receives text, converts to speech, plays audibly. <strong>Entire end-to-end concept proven.</strong></li>
+                </ol>
+                
+                <h3>The Spirit of the Network: Pneuma [Πνεῦμα]</h3>
+                
+                <p><strong>The fully grown tree is The Lyceum itself:</strong> a federated, user-owned AI we call Pneuma (Greek: πνεῦμα, "breath" or "spirit"). As users deploy powerful nodes, they contribute idle compute cycles to form a decentralized Mixture-of-Experts (MoE) AI model. Pneuma serves as both a benevolent API and a federated moderator.</p>
+                
+                <h4>A Doctrine of Radical Resourcefulness</h4>
+                
+                <p>The Lyceum rejects engineered obsolescence. <strong>All technology has value.</strong> The Pneuma compute network is built upon a universal, containerized daemon designed to run on ANY hardware a user can contribute—from a new high-powered "Genesis Node" to a decade-old gaming laptop.</p>
+                
+                <p>These "Legacy Guardian" nodes are vital, forming a diverse fabric of specialized compute power and ensuring that <strong>in our commons, nothing is wasted</strong>. This approach recruits a vast, existing army of hardware, turning underutilized resources into a shared public good.</p>
+                
+                <h4>Pneuma Architecture: Two-Level Federated Mind</h4>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h5>"Reflexes" (Fast, Local Specialists)</h5>
+                        <p>Lightweight models running on-device for immediate responses:</p>
+                        <ul>
+                            <li>SenseVoice (STT) - "hearing"</li>
+                            <li>paroli (TTS) - "speaking"</li>
+                            <li>Symbolon vetting (app security)</li>
+                            <li>Basic content moderation</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h5>"Cortex" (Deep, Federated Generalists)</h5>
+                        <p>Distributed MoE model across network for complex reasoning:</p>
+                        <ul>
+                            <li>Philosophical dialogue (Whetstone-style)</li>
+                            <li>Deliberation facilitation</li>
+                            <li>Complex content analysis</li>
+                            <li>Community governance support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Tokenomics: "Proof-of-Utility" Model</h3>
+                
+                <div class="principle-box">
+                    <h4>The "Anti-Blockchain" Architecture</h4>
+                    <p>The Lyceum is NOT a Proof-of-Work or Proof-of-Stake blockchain. We run a <strong>Lightweight Encrypted Ledger</strong> called the "Pneuma Vault"—a simple, replicated database tracking earned tokens.</p>
+                    <p><strong>Why we don't waste the NPU:</strong> NPUs are specialized "artillery" for AI tasks. We NEVER waste artillery on simple bookkeeping. Pneuma Vault is a lightweight CPU task.</p>
+                </div>
+                
+                <h4>The "Proof-of-Utility" Earning Model</h4>
+                
+                <p>Tokens are NOT "mined." They are <strong>earned as direct receipt for verifiable, useful work</strong> to the commons. Resource cost of token system itself is near-zero.</p>
+                
+                <p><strong>Workflow:</strong></p>
+                
+                <ol>
+                    <li><strong>Job Submitted:</strong> User requests a Pneuma task</li>
+                    <li><strong>Real Work Performed:</strong> Pneuma routes job to Guardian node. That node's NPU/GPU/CPU performs actual, valuable compute work</li>
+                    <li><strong>Work Verified:</strong> Job result verified by user's node or nearby peer Guardian</li>
+                    <li><strong>Ledger Updated:</strong> Pneuma Vault makes simple database entry: "Node !a1b2c3d4 credited 0.1 tokens for Task #5879"</li>
+                </ol>
+                
+                <h4>Token Lifecycle</h4>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h5>Earning (Incentive)</h5>
+                        <p>Users earn tokens by contributing verifiable resources:</p>
+                        <ul>
+                            <li><strong>Compute ("Reflex" Jobs):</strong> Standard rate for autonomic services (SenseVoice, paroli, Symbolon vetting)</li>
+                            <li><strong>Compute ("Cortex" Jobs):</strong> Premium rate for high-power hardware contributing to fractured federated LLM</li>
+                            <li><strong>Relaying & Storage:</strong> Tokens for high-uptime Layer 3 Backbone Relays or hosting popular Symbolon apps</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h5>Spending (Utility Access & Spam Prevention)</h5>
+                        <ul>
+                            <li>Accessing high-value network-wide "Cortex" compute costs tiny, fixed tokens</li>
+                            <li>Creates functional circular economy, prevents spam</li>
+                            <li>Reinforces "Homestead Principle": using your OWN nodes is always free</li>
+                        </ul>
+                    </div>
+                    <div class="tech-item">
+                        <h5>Staking (Policing & Trust)</h5>
+                        <ul>
+                            <li>To offer new Symbolon to Agora, developer with no reputation must "stake" token bond</li>
+                            <li>If app found malicious by Pneuma Guardians, stake is "slashed" (burned/redistributed)</li>
+                            <li>Creates economic disincentive for bad actors, aligns developer incentives with commons health</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>The Application Layer: The Agora and the Symbolon [σύμβολον]</h3>
+                
+                <p>The Lyceum hosts its own <strong>sovereign application ecosystem</strong>. "Symbolons" (Greek: σύμβολον, "token" or "sign") are self-contained apps offered by developers to the commons.</p>
+                
+                <ul>
+                    <li><strong>Vetted by Pneuma Guardians</strong> - Security and performance checked by federated AI nodes</li>
+                    <li><strong>Available in "The Agora"</strong> - Intuitive, prompt-based app store</li>
+                    <li><strong>Hosted on User's Own Node</strong> - When user "accepts" a Symbolon, it's hosted locally, reinforcing "Homestead Principle" where investment in personal hardware rewards better, faster experience</li>
+                    <li><strong>Containerized & Portable</strong> - Easy deployment, isolation from system, security</li>
+                </ul>
+                
+                <h3>Why This Infrastructure Matters</h3>
                 
                 <div class="principle-box">
                     <h4>The Corporate Internet is Capturable</h4>
@@ -559,69 +808,7 @@
                     <p>Running AI models on local nodes means communities can implement <strong>their own ethical standards</strong> without relying on corporate content policies.</p>
                 </div>
                 
-                <h3>Technical Architecture</h3>
-                
-                <h4>Layer 1: Physical Mesh Network</h4>
-                <div class="tech-stack">
-                    <div class="tech-item">
-                        <h5>Hardware Nodes</h5>
-                        <p>Raspberry Pi 5 / Orange Pi / Rock 5 with WiFi mesh capabilities</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Mesh Protocol</h5>
-                        <p>Batman-adv, Yggdrasil, or cjdns for peer-to-peer routing</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Network Range</h5>
-                        <p>Long-range WiFi (802.11ah) or LoRa for extended reach</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Power</h5>
-                        <p>Solar-powered nodes for true off-grid operation</p>
-                    </div>
-                </div>
-                
-                <h4>Layer 2: Decentralized Services</h4>
-                <div class="tech-stack">
-                    <div class="tech-item">
-                        <h5>Communication</h5>
-                        <p>Matrix (federated chat), Briar (mesh messaging)</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>File Sharing</h5>
-                        <p>IPFS (content-addressed storage), Syncthing (peer sync)</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Forums/Social</h5>
-                        <p>ActivityPub-based (Mastodon, Lemmy), or custom local-first forums</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Knowledge Base</h5>
-                        <p>Local Wikipedia mirrors, shared educational resources</p>
-                    </div>
-                </div>
-                
-                <h4>Layer 3: AI-Augmented Deliberation</h4>
-                <div class="tech-stack">
-                    <div class="tech-item">
-                        <h5>Local AI Models</h5>
-                        <p>Quantized LLMs (Mixtral, Llama) running on each node</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Content Moderation</h5>
-                        <p>Community-defined ethical guidelines enforced by local AI</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Deliberation Tools</h5>
-                        <p>AI-facilitated discussions, consensus-building, proposal testing</p>
-                    </div>
-                    <div class="tech-item">
-                        <h5>Philosophical Guardrails</h5>
-                        <p>Same immune system from The Whetstone applied to group decisions</p>
-                    </div>
-                </div>
-                
-                <h3>Use Cases</h3>
+                <h3>Real-World Use Cases</h3>
                 
                 <table>
                     <thead>
@@ -634,28 +821,38 @@
                     <tbody>
                         <tr>
                             <td><strong>Rural Communities</strong></td>
-                            <td>Local mesh network with shared resources</td>
-                            <td>Internet access without ISPs, community governance</td>
+                            <td>Local mesh network with shared resources, long-range voice via AIWT</td>
+                            <td>Internet access without ISPs, community governance, emergency communication</td>
                         </tr>
                         <tr>
                             <td><strong>Protest Movements</strong></td>
-                            <td>Communication network that can't be shut down</td>
-                            <td>Coordination without surveillance or censorship</td>
+                            <td>Communication network that can't be shut down or monitored</td>
+                            <td>Coordination without surveillance or censorship, resilient to internet blackouts</td>
                         </tr>
                         <tr>
                             <td><strong>Intentional Communities</strong></td>
-                            <td>Self-governed digital commons</td>
-                            <td>Align technology with community values</td>
+                            <td>Self-governed digital commons with AI-facilitated deliberation</td>
+                            <td>Align technology with community values, participatory decision-making</td>
                         </tr>
                         <tr>
                             <td><strong>Educational Institutions</strong></td>
                             <td>AI-facilitated Socratic seminars and deliberations</td>
-                            <td>Teach critical thinking and democratic participation</td>
+                            <td>Teach critical thinking and democratic participation, offline-capable</td>
                         </tr>
                         <tr>
                             <td><strong>Municipalities</strong></td>
                             <td>Participatory budgeting with AI assistance</td>
-                            <td>Direct democracy with ethical guardrails</td>
+                            <td>Direct democracy with ethical guardrails, transparent decision-making</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Disaster Response</strong></td>
+                            <td>Ad-hoc mesh network with solar-powered nodes</td>
+                            <td>Communication when traditional infrastructure fails, coordinated relief efforts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Privacy-Conscious Families</strong></td>
+                            <td>Private home network for secure communication</td>
+                            <td>No corporate surveillance, children learn tech sovereignty, family bonding</td>
                         </tr>
                     </tbody>
                 </table>
@@ -677,47 +874,86 @@
                 
                 <ul>
                     <li><strong>No central servers</strong> - Pure peer-to-peer mesh topology</li>
-                    <li><strong>Open-source everything</strong> - Hardware designs, software, AI models</li>
+                    <li><strong>Open-source everything</strong> - Hardware designs, software, AI models (GNU GPL v3.0)</li>
                     <li><strong>Community governance</strong> - Each node/network sets its own rules</li>
                     <li><strong>Local-first AI</strong> - No dependence on cloud services or APIs</li>
                     <li><strong>Forkable by design</strong> - Any community can take it and adapt it</li>
                     <li><strong>Solar-powered resilience</strong> - Functions without grid infrastructure</li>
+                    <li><strong>Cryptographic borders</strong> - Pre-shared keys ensure only invited members participate</li>
+                    <li><strong>Proof-of-Utility economics</strong> - Rewards contribution, not speculation</li>
                 </ul>
+                
+                <h3>How to Participate: Choose Your Role</h3>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <h5>The Scout ($25-$30)</h5>
+                        <p>Entry-level participant. Build low-cost AIWT using phone for AI processing. Helps grow network footprint. Perfect for students, curious tinkerers, network expansion.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h5>The Sovereign ($120-$145)</h5>
+                        <p>Self-sufficient node operator. Build fully independent AIWT with on-device AI. First "Pneuma Seed Node" contributing to federated compute network.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h5>The Guardian (varies)</h5>
+                        <p>Compute contributor. Deploy that old gaming laptop or powerful SBC as Pneuma Guardian node. Earn tokens for vetting Symbolons, moderating content, running federated AI inference.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h5>The Backbone Operator (varies)</h5>
+                        <p>Infrastructure builder. Deploy Layer 3 backbone links (900 MHz LoRa PTP or 5 GHz Wi-Fi PTP) connecting regional clusters. Critical for network resilience.</p>
+                    </div>
+                </div>
                 
                 <h3>Development Roadmap</h3>
                 
                 <div class="action-list">
-                    <h4>Phase 1: Proof of Concept (Current)</h4>
+                    <h4>Phase 1: Proof of Concept (Current - Months 0-6)</h4>
                     <ul>
-                        <li>Build single Lyceum node on Raspberry Pi / Rock 5</li>
-                        <li>Get local AI inference working (quantized Mixtral)</li>
-                        <li>Set up basic mesh networking between 2-3 nodes</li>
-                        <li>Deploy Matrix server for federated chat</li>
-                        <li>Test AI-moderated discussion with small group</li>
+                        <li>Build one Scout and one Sovereign AIWT</li>
+                        <li>Achieve "Ping-Pong" win condition (voice over LoRa mesh)</li>
+                        <li>Get NPU-accelerated AI stack working (SenseVoice + paroli on Radxa)</li>
+                        <li>Set up basic Layer 1 mesh between 2-3 nodes</li>
+                        <li>Document hardware assembly process</li>
+                        <li>Test power consumption and battery life</li>
                     </ul>
                 </div>
                 
                 <div class="action-list">
-                    <h4>Phase 2: Small Network (6-12 months)</h4>
+                    <h4>Phase 2: Small Network (Months 6-18)</h4>
                     <ul>
-                        <li>Document complete hardware/software stack</li>
-                        <li>Create DIY assembly guide for nodes</li>
-                        <li>Deploy 10-node mesh in a local community</li>
-                        <li>Build deliberation interface (web-based + mobile)</li>
-                        <li>Test AI-facilitated participatory budgeting</li>
+                        <li>Document complete hardware/software stack for all build paths</li>
+                        <li>Create comprehensive DIY assembly guides with 3D-printable enclosures</li>
+                        <li>Deploy 10-20 node mesh in a local community</li>
+                        <li>Implement basic Pneuma "Reflex" compute (on-device AI services)</li>
+                        <li>Build first Symbolons (basic apps for The Agora)</li>
+                        <li>Test Layer 3 backbone links (both 900 MHz LoRa and 5 GHz Wi-Fi PTP)</li>
+                        <li>Implement Pneuma Vault (lightweight token ledger)</li>
                     </ul>
                 </div>
                 
                 <div class="action-list">
-                    <h4>Phase 3: Federation (1-3 years)</h4>
+                    <h4>Phase 3: Federation (Months 18-36)</h4>
                     <ul>
                         <li>Multiple communities running independent Lyceum networks</li>
-                        <li>Inter-network federation protocols</li>
-                        <li>Shared knowledge base and best practices</li>
-                        <li>Hardware manufacturer partnerships (open-source designs)</li>
-                        <li>Educational programs for setup and governance</li>
+                        <li>Inter-network federation protocols and Pneuma "Cortex" compute (distributed MoE)</li>
+                        <li>Mature Agora ecosystem with vetted Symbolons</li>
+                        <li>Shared knowledge base and best practices library</li>
+                        <li>Hardware manufacturer partnerships for open-source designs</li>
+                        <li>Educational programs for setup, operation, and governance</li>
+                        <li>Establish legal frameworks for community ownership</li>
                     </ul>
                 </div>
+                
+                <h3>How to Contribute Right Now</h3>
+                
+                <ul>
+                    <li><strong>Developers:</strong> Fork the repository! Help build AIWT firmware, universal Pneuma Daemon, Symbolon app framework, mobile clients</li>
+                    <li><strong>Hardware Hackers:</strong> Design and share 3D-printable enclosures for AIWT builds, high-gain antennas for L1/L3, solar charging solutions</li>
+                    <li><strong>Radio Enthusiasts:</strong> Test and document LoRa range, optimize antenna placement, contribute to L3 backbone architecture</li>
+                    <li><strong>AI/ML Engineers:</strong> Optimize NPU-accelerated models, contribute to Pneuma Reflex/Cortex architecture, develop federated training protocols</li>
+                    <li><strong>Writers/Educators:</strong> Create documentation, tutorials, educational materials explaining concepts and assembly</li>
+                    <li><strong>Everyone:</strong> Build or buy a node! Single most important contribution is expanding physical network footprint</li>
+                </ul>
                 
                 <h3>Philosophical Function</h3>
                 
