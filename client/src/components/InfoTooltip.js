@@ -38,7 +38,7 @@ function InfoTooltip() {
                         we're not alone in what we feel.
                     </p>
                     <p className="tooltip-footer">
-                        Part of the <a href="https://yargnad.github.io/sensus-app/" target="_blank" rel="noopener noreferrer">Whetstone Framework</a>
+                        Part of the <a href="https://yargnad.github.io/The-Authentic-Rebellion-Framework/" target="_blank" rel="noopener noreferrer">Authentic Rebellion Framework</a>
                     </p>
                 </div>
             )}
