@@ -1,7 +1,7 @@
 # Sensus
 ### An Antidote to the Performance Prison.
 
-> **Part of [The Whetstone Framework](https://yargnad.github.io/sensus-app/)** — A three-act blueprint for building ethical AI infrastructure that serves human flourishing instead of extraction.
+> **Part of [The Authentic Rebellion Framework](https://yargnad.github.io/The-Authentic-Rebellion-Framework/)** — A four-act movement for building ethical AI infrastructure that serves human flourishing instead of extraction.
 
 ---
 
@@ -46,14 +46,14 @@ Sensus is more than an app; it is a tangible argument. It is an open-source proj
 
 ## The Bigger Picture
 
-Sensus is **Act I** of The Whetstone Framework—a three-part vision for building technology that serves human agency:
+Sensus is **Act I** of The Authentic Rebellion Framework—a four-act progression for building technology that serves human agency:
 
-- **Act I: Sensus** (this project) — Detoxification: Anonymous emotional exchange to escape the Performance Prison
-- **Act II: The Whetstone** (in development) — Individuation: A local-first AI device for Socratic self-reflection
-- **Act III: The Lyceum Network** (active development) — Decentralized Infrastructure: A user-owned, multi-layered mesh network for communication and federated compute, protected from corporate capture
+- **Act I: Sensus** (this project) — **Detoxification**: Anonymous emotional exchange to escape the Performance Prison and learn to feel again
+- **Act II: The Whetstone** ([GitHub](https://github.com/yargnad/The-Whetstone)) — **Cognitive Strengthening**: A local-first AI device for Socratic self-reflection and learning to think independently
+- **Act III: Kintsugi** ([GitHub](https://github.com/yargnad/Kintsugi)) — **Public Witness**: A gallery for sharing philosophical transformation stories (making the wounds golden)
+- **Act IV: The Lyceum Network** ([GitHub](https://github.com/yargnad/The-Lyceum)) — **Collective Infrastructure**: A user-owned, decentralized mesh network for communication and federated compute, protected from corporate capture
 
-**[📖 Read the Whetstone Framework documentation](https://yargnad.github.io/sensus-app/)**
-**[🌐 Explore The Lyceum Network](https://github.com/yargnad/The-Lyceum)**
+**[📖 Read the full Framework documentation](https://yargnad.github.io/The-Authentic-Rebellion-Framework/)**
 
 ---
 
@@ -81,4 +81,6 @@ If you believe in building a more authentic digital world, please feel free to o
 ---
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the **GNU General Public License v3.0** to ensure it remains free and open-source forever, protected from corporate capture.
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
