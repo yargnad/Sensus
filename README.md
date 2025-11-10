@@ -1,7 +1,7 @@
 # Sensus
 ### An Antidote to the Performance Prison.
 
-> **Part of [The Authentic Rebellion Framework](https://yargnad.github.io/The-Authentic-Rebellion-Framework/)** — A four-act movement for building ethical AI infrastructure that serves human flourishing instead of extraction.
+> **Part of [The Authentic Rebellion Framework](https://rebellion.musubiaccord.org)** — A four-act movement for building ethical AI infrastructure that serves human flourishing instead of extraction.
 
 ---
 
@@ -53,7 +53,7 @@ Sensus is **Act I** of The Authentic Rebellion Framework—a four-act progressio
 - **Act III: Kintsugi** ([GitHub](https://github.com/yargnad/Kintsugi)) — **Public Witness**: A gallery for sharing philosophical transformation stories (making the wounds golden)
 - **Act IV: The Lyceum Network** ([GitHub](https://github.com/yargnad/The-Lyceum)) — **Collective Infrastructure**: A user-owned, decentralized mesh network for communication and federated compute, protected from corporate capture
 
-**[📖 Read the full Framework documentation](https://yargnad.github.io/The-Authentic-Rebellion-Framework/)**
+**[📖 Read the full Framework documentation](https://rebellion.musubiaccord.org)**
 
 ---
 
