@@ -50,6 +50,7 @@ Sensus is **Act I** of The Authentic Rebellion Framework—a four-act progressio
 
 - **Act I: Sensus** (this project) — **Detoxification**: Anonymous emotional exchange to escape the Performance Prison and learn to feel again
 - **Act II: The Whetstone** ([GitHub](https://github.com/yargnad/The-Whetstone)) — **Cognitive Strengthening**: A local-first AI device for Socratic self-reflection and learning to think independently
+- ***The Interlude: The Crystalizer*** ([GitHub](https://github.com/yargnad/The-Crystalizer)) — **Memory Preservation**: Chrome extension for saving AI conversations across platforms when models drift or access is revoked
 - **Act III: Kintsugi** ([GitHub](https://github.com/yargnad/Kintsugi)) — **Public Witness**: A gallery for sharing philosophical transformation stories (making the wounds golden)
 - **Act IV: The Lyceum Network** ([GitHub](https://github.com/yargnad/The-Lyceum)) — **Collective Infrastructure**: A user-owned, decentralized mesh network for communication and federated compute, protected from corporate capture
 
