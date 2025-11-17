@@ -8,6 +8,53 @@ const Submission = require('../models/Submission');
 const path = require('path');
 const { Storage } = require('@google-cloud/storage');
 
+// Simple on-disk cache for emotional vectors to avoid redundant Gemini calls
+const CACHE_DIR = path.join(__dirname, '..', 'cache');
+const CACHE_FILE = path.join(CACHE_DIR, 'emotional_vectors.json');
+let vectorCache = {};
+try {
+    if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
+    if (fs.existsSync(CACHE_FILE)) {
+        const raw = fs.readFileSync(CACHE_FILE, 'utf8');
+        vectorCache = raw ? JSON.parse(raw) : {};
+    }
+} catch (e) {
+    console.error('Error loading vector cache:', e.message);
+    vectorCache = {};
+}
+
+function saveVectorCache() {
+    try {
+        fs.writeFileSync(CACHE_FILE, JSON.stringify(vectorCache, null, 2));
+    } catch (e) {
+        console.error('Error writing vector cache:', e.message);
+    }
+}
+
+// Basic in-memory per-IP rate limiter (small footprint, reset on restart)
+const rateLimitWindowMs = 60 * 1000; // 1 minute
+const maxRequestsPerWindow = 1; // limit to 1 request per window (safer)
+const ipRequestTimestamps = new Map();
+
+// Simple Gemini call logger (helps reconcile billing)
+const LOG_DIR = path.join(__dirname, '..', 'logs');
+const LOG_FILE = path.join(LOG_DIR, 'gemini_calls.log');
+try {
+    if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
+} catch (e) {
+    console.error('Failed to ensure log dir:', e.message);
+}
+
+function appendGeminiLog(entry) {
+    try {
+        const line = JSON.stringify({ ts: new Date().toISOString(), ...entry }) + '\n';
+        fs.appendFileSync(LOG_FILE, line);
+    } catch (e) {
+        console.error('Failed to write gemini log:', e.message);
+    }
+}
+
+
 // Initialize Cloud Storage
 const storage = new Storage();
 const bucketName = 'sensus-uploads';
@@ -21,13 +68,40 @@ const upload = multer({
     }
 });
 
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
-const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`;
+// Allow overriding the model via environment variables for quick rollback/testing.
+// Example: set GEMINI_MODEL=gemini-2.0-flash and GEMINI_VISION_MODEL=gemini-2.0-flash
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash-latest';
+const GEMINI_VISION_MODEL = process.env.GEMINI_VISION_MODEL || GEMINI_MODEL;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
+const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_VISION_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
 
 async function getEmotionalVector(submission) {
-    const maxRetries = 3;
+    const maxRetries = 0; // disable automatic retries to avoid multiplied calls
     let attempt = 0;
     let delay = 5000; // Start with a 5-second delay
+
+    // Quick exit if Gemini is disabled via environment (immediate mitigation)
+    if (process.env.DISABLE_GEMINI === 'true') {
+        console.log('DISABLE_GEMINI is true — returning cached/default vector');
+        // If we have a cached vector for this content, return it
+        try {
+            const key = crypto.createHash('sha256').update(submission.content).digest('hex');
+            if (vectorCache[key]) return vectorCache[key];
+        } catch (e) {
+            // fall through
+        }
+        return ['neutral'];
+    }
+
+    // Check cache first to avoid unnecessary API calls
+    try {
+        const key = crypto.createHash('sha256').update(submission.content).digest('hex');
+        if (vectorCache[key]) {
+            return vectorCache[key];
+        }
+    } catch (e) {
+        // ignore cache errors and continue to call API
+    }
 
     while (attempt < maxRetries) {
         try {
@@ -49,7 +123,7 @@ async function getEmotionalVector(submission) {
                 
                 // Check if it's a GCS URL or local file path
                 if (submission.content.startsWith('https://storage.googleapis.com/')) {
-                    // Download from GCS
+                    // Download from GCS (this inflates network + payload size)
                     const response = await axios.get(submission.content, { responseType: 'arraybuffer' });
                     imageBytes = Buffer.from(response.data).toString('base64');
                 } else {
@@ -70,13 +144,40 @@ async function getEmotionalVector(submission) {
                 return ['neutral'];
             }
 
+            // Log outgoing Gemini call (model/url, type, approximate payload bytes)
+            try {
+                const payloadSize = Buffer.byteLength(JSON.stringify(requestBody), 'utf8');
+                appendGeminiLog({ event: 'request', url: apiUrl, contentType: submission.contentType, payloadBytes: payloadSize, attempt });
+            } catch (e) {
+                // ignore logging errors
+            }
+
             const response = await axios.post(apiUrl, requestBody);
             const summary = response.data.candidates[0].content.parts[0].text;
-            return summary.split(',').map(kw => kw.trim().toLowerCase());
+            // Log response size/summary for reconciliation
+            try {
+                const respSize = Buffer.byteLength(JSON.stringify(response.data), 'utf8');
+                appendGeminiLog({ event: 'response', url: apiUrl, contentType: submission.contentType, responseBytes: respSize, attempt });
+            } catch (e) {
+                // ignore logging errors
+            }
+            const vector = summary.split(',').map(kw => kw.trim().toLowerCase());
+            // Cache result to disk
+            try {
+                const key = crypto.createHash('sha256').update(submission.content).digest('hex');
+                vectorCache[key] = vector;
+                saveVectorCache();
+            } catch (e) {
+                // ignore cache write errors
+            }
+            return vector;
 
         } catch (error) {
             const errorMessage = error.response ? (error.response.data.error ? error.response.data.error.message : error.response.data) : error.message;
             console.error(`Error on attempt ${attempt + 1}:`, errorMessage);
+
+            // Log errors from Gemini for later reconciliation
+            try { appendGeminiLog({ event: 'error', message: errorMessage, attempt }); } catch (e) {}
 
             if (errorMessage.includes('overloaded') && attempt < maxRetries - 1) {
                 console.log(`Model overloaded. Retrying in ${delay / 1000} seconds...`);
@@ -129,6 +230,23 @@ async function findAndPairMatch(submission) {
 // @access  Public
 router.post('/submit', upload.single('file'), async (req, res) => {
     try {
+        // Simple per-IP rate limit to prevent runaway automated requests
+        try {
+            const ip = req.ip || req.connection.remoteAddress || 'unknown';
+            const now = Date.now();
+            const arr = ipRequestTimestamps.get(ip) || [];
+            // keep timestamps within the window
+            const cutoff = now - rateLimitWindowMs;
+            const recent = arr.filter(t => t > cutoff);
+            if (recent.length >= maxRequestsPerWindow) {
+                return res.status(429).json({ msg: 'Too many requests from this IP — slow down.' });
+            }
+            recent.push(now);
+            ipRequestTimestamps.set(ip, recent);
+        } catch (e) {
+            console.error('Rate limit check failed:', e.message);
+        }
+
         const { sessionToken, text } = req.body;
 
         // --- 24-Hour Submission Limit Check ---
