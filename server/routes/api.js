@@ -70,10 +70,10 @@ const upload = multer({
 
 // Allow overriding the model via environment variables for quick rollback/testing.
 // Example: set GEMINI_MODEL=gemini-2.0-flash and GEMINI_VISION_MODEL=gemini-2.0-flash
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash-latest';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const GEMINI_VISION_MODEL = process.env.GEMINI_VISION_MODEL || GEMINI_MODEL;
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
-const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_VISION_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
+const GEMINI_VISION_API_URL = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_VISION_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
 
 async function getEmotionalVector(submission) {
     const maxRetries = 0; // disable automatic retries to avoid multiplied calls
