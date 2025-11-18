@@ -1,3 +1,39 @@
+# Node dependencies
+node_modules/
+
+# dotenv environment variables
+*.env
+*.env.local
+# server env (sensitive)
+server/.env
+server/.env.bak
+
+# build / output
+client/build/
+dist/
+
+# logs and cache
+server/logs/
+server/cache/
+*.log
+*.local.log
+
+# OS files
+.DS_Store
+
+# temporary files
+tmp/
+*.tmp
+*.swp
+*.swo
+
+# VS Code
+.vscode/
+
+# artifacts
+.startup.log
+# local snapshot (optional)
+sensus-codebase.txt
 # Node
 node_modules/
 npm-debug.log
